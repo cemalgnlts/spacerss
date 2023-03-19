@@ -1,0 +1,63 @@
+<main>
+  <div class="feeds-grid">
+    <a class="feeds-grid__anchor feeds-grid__anchor--add" href="#" id="create-feed">
+      <figure class="feeds-grid__figure">
+        <span class="material-icons display-medium">add</span>
+      </figure>
+    </a>
+    ${feeds.map(feed => `<a class="feeds-grid__anchor" href="/feeds/${feed.key}">
+      <figure class="feeds-grid__figure">
+        <img
+          class="feeds-grid__img"
+          src="${feed.icon}"
+          alt="${feed.name} icon"
+        />
+        <figcaption class="feeds-grid__figcaption">${feed.name}</figcaption>
+      </figure>
+	</a>`).join("")}
+  </div>
+  <!-- /.feeds-grid -->
+
+  <div class="create-feed-dialog">
+	<div class="create-feed-dialog__content step--url">
+		<div class="create-feed-dialog__close material-icons">close</div>
+		<div class="create-feed-dialog__url">
+			<label for="inp-url">Page URL</label>
+			<input class="create-feed__input input body-large" type="url" id="inp-url" placeholder="https://deta.space/blog" required />
+
+			<button class="create-feed-dialog__url__button button" id="check-page"><span class="material-icons">search</span> Check</button>
+		</div>
+		<div class="create-feed-dialog__info">
+			<img class="create-feed-dialog__info__img" src="" width="56px" height="56px" alt="Page fav icon">
+			<label for="inp-page-icon">Icon URL</label>
+			<input type="text" class="input" id="inp-page-icon" placeholder="https://icon.horse/icon/deta.space" />
+
+			<label for="inp-page-title">Page Title</label>
+			<input type="text" class="input" id="inp-page-title" placeholder="Deta Blog" />
+			
+			<label for="inp-page-desc">Page Description (optional)</label>
+			<textarea type="text" class="input" id="inp-page-desc" placeholder="Your own personal computer in the cloud: private, secure & always online."></textarea>
+
+			<button class="create-feed-dialog__info__button button" id="info-page"><span class="material-icons">arrow_forward</span> Continue</button>
+		</div>
+		<div class="create-feed-dialog__meta">
+			<label for="inp-feed-container">Feed Container</label>
+			<input type="text" class="input" id="inp-feed-container" placeholder="article" />
+			
+			<label for="inp-feed-title">Feed Title</label>
+			<input type="text" class="input" id="inp-feed-title" placeholder="h2,h3" />
+
+			<label for="inp-feed-content">Feed Description (optional)</label>
+			<input type="text" class="input" id="inp-feed-content" placeholder=".content" />
+
+			<label for="inp-feed-link">Feed Link (optional)</label>
+			<input type="text" class="input" id="inp-feed-link" placeholder="a" />
+			
+			<label for="inp-feed-image">Feed Image (optional)</label>
+			<input type="text" class="input" id="inp-feed-image" placeholder="" />
+
+			<button class="create-feed-dialog__meta__button button" id="add-page"><span class="material-icons">check</span> Complete</button>
+		</div>
+	</div>
+  </div>
+</main>

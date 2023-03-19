@@ -1,0 +1,9 @@
+v: 0
+app_name: "Space RSS"
+icon: "./app-icon.png"
+micros:
+  - name: "backend"
+    engine: "nodejs16"
+    src: "."
+    public_routes:
+      - "/*"

@@ -1,0 +1,79 @@
+<header class="feed-info-header container">
+  <a href="/feeds" class="return-back" id="back-to-feeds">
+    <span class="material-icons">chevron_left</span>
+    Back to Feeds
+  </a>
+
+  <div class="feed-info-header__content">
+    <img class="feed-info-header__content__img" src="${page.icon}" alt="${page.name} icon" />
+    <h1 class="feed-info-header__content__title display-small">${page.name}</h1>
+		${page.description ? `<p class="feed-info-header__content__info">${page.description}</p>` : ""}
+  </div>
+</header>
+
+<main>
+  <details class="block" open>
+    <summary class="block__header headline-large"><span>Preview</span></summary>
+		<p>Feed key: <span class="select-all fw-bold">${page.key}</span></p>
+		<p>All feeds are updated hourly.</p>
+    <pre class="code-block">
+      <iframe src="/api/feeds/${page.key}?format=html&bclr=201a1b&clr=ece0e0"></iframe>
+    </pre>
+  </details>
+
+  <details class="block">
+    <summary class="block__header headline-large"><span>API</span></summary>
+    <p>Use this endpoint to receive updates in JSON format.</p>
+    <pre class="code-block">
+		<code class="highlight-chip no-select fw-bolder">GET</code> <code class="select-all"><script>document.write(location.origin)</script>/api/feeds/${page.key}</code>
+    </pre>
+
+    <p>Returns:</p>
+    <pre class="code-block">
+    [
+    &nbsp;{
+    &nbsp;&nbsp;<span class="highlight">title</span>: "Title",
+    &nbsp;&nbsp;<span class="highlight">description</span>: "Description",
+    &nbsp;&nbsp;<span class="highlight">image</span>: "image.png",
+    &nbsp;&nbsp;<span class="highlight">link</span>: "/link"
+    &nbsp;}
+    ]
+    </pre>
+
+		<p>Use the <span class="highlight">format</span> parameter to get the data in xml format.</p>
+    <pre class="code-block">
+      <code class="highlight-chip no-select fw-bolder">GET</code> <code class="select-all"><script>document.write(location.origin)</script>/api/feeds/${page.key}<span class="fw-bold highlight">?format=xml</span></code>
+    </pre>
+
+    <p>Returns:</p>
+    <pre class="code-block">
+			&lt;rss version="2.0"&gt;
+			&nbsp;&lt;channel&gt;
+      &nbsp;&nbsp;&lt;item&gt;
+      &nbsp;&nbsp;&nbsp;<span class="highlight">&lt;title&gt;</span>Title<span class="highlight">&lt;/title&gt;</span>
+      &nbsp;&nbsp;&nbsp;<span class="highlight">&lt;desc&gt;</span>Description<span class="highlight">&lt;/desc&gt;</span>
+      &nbsp;&nbsp;&nbsp;<span class="highlight">&lt;image&gt;</span>image.png<span class="highlight">&lt;/image&gt;</span>
+      &nbsp;&nbsp;&nbsp;<span class="highlight">&lt;link&gt;</span>/link<span class="highlight">&lt;/link&gt;</span>
+      &nbsp;&nbsp;&lt;/item&gt;
+      &nbsp;&lt;/channel&gt;
+			&lt;/rss&gt;
+    </pre>
+  </details>
+
+  <details class="block">
+    <summary class="block__header headline-large"><span>Widget</span></summary>
+    <p>There is also a small api to embed updates on your page.</p>
+    <pre class="code-block select-all">
+      <code>&lt;iframe src="<script>document.write(location.origin)</script>/api/feeds/${page.key}<span class="highlight">?format=html</span>"&gt;&lt;/iframe&gt;</code>
+    </pre>
+
+    <p>A few options for customization.</p>
+    <pre class="code-block select-all">
+      <code>?<span class="highlight">format=html</span>
+      &<span class="highlight">bclr=000000</span>
+      &<span class="highlight">clr=ffffff</span>
+    </pre>
+  </details>
+</main>
+
+<footer></footer>

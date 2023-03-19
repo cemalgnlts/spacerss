@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>${page.name}</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        font-family: Roboto, sans-serif;
+				background-color: #${bclr};
+				color: #${clr};
+      }
+      figure a {
+        display: flex;
+        align-items: center;
+      }
+      figure {
+        flex-grow: 1;
+      }
+      figure + figure {
+        margin-top: 0.5em;
+      }
+      figcaption {
+				height: 56px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-around;
+      }
+      img {
+        width: 56px;
+        height: 56px;
+        margin-right: 1em;
+      }
+      h1 {
+        font-size: 1.2rem;
+      }
+      p {
+        font-size: 0.875rem;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+      }
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+			${feeds.map(feed =>`<figure>
+				<a href="${feed.link}">
+					${feed.image ? `<img src="${feed.image}" alt="" />` : ""}
+          <figcaption>
+						${feed.title ? `<h1>${feed.title}</h1>` : ""}
+						${feed.content ? `<p>${feed.content}</p>` : ""}
+          </figcaption>
+        </a>
+			</figure>`).join("")}
+    </main>
+  </body>
+</html>
