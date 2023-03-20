@@ -142,7 +142,7 @@ function initCreateFeedDialog() {
 }
 
 function initOutAnimations() {
-	const backLinks = document.querySelectorAll("#back-to-feeds,.feeds-grid__anchor");
+	const backLinks = document.querySelectorAll("#back-to-feeds,.feeds-grid__anchor:not(.feeds-grid__anchor--add)");
 	if (backLinks.length === 0) return;
 
 	backLinks.forEach(link => link.onclick = () => document.body.classList.replace("anim-slide-in", "anim-slide-out"));
