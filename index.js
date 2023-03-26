@@ -1,5 +1,3 @@
-import "./libs/envParser.js";
-
 import express from "express";
 import es6Renderer from "express-es6-template-engine";
 
